@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birth Weight Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+
+        h1 {
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 12px 0 5px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 18px;
+            color: #222;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Predict the Birth Weight of a Child</h1>
+        <form method="POST" action="/predict">
+            <label for="Gestation">Gestation (weeks):</label>
+            <input type="number" name="gestation" id="Gestation" required>
+
+            <label for="Parity">Parity:</label>
+            <input type="number" name="parity" id="Parity" required>
+
+            <label for="Age">Mother's Age:</label>
+            <input type="number" name="age" id="Age" required>
+
+            <label for="Height">Mother's Height (cm):</label>
+            <input type="number" name="height" id="Height" required>
+
+            <label for="Weight">Mother's Weight (kg):</label>
+            <input type="number" name="weight" id="Weight" required>
+
+            <label for="Smoke">Does the mother smoke? (1 = Yes, 0 = No):</label>
+            <input type="number" name="smoke" id="Smoke" min="0" max="1" required>
+
+            <button type="submit">Calculate Birth Weight</button>
+        </form>
+
+        
+            <div class="result">
+                <p>Predicted Birth Weight: <strong>{{ model_predict }} </strong></p>
+            </div>
+
+    </div>
+
+</body>
+</html>
